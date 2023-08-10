@@ -1,26 +1,24 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  public forecasts?: WeatherForecast[];
+export class AppComponent implements OnInit {
+  users: any;
+  constructor(private http: HttpClient) { }
 
-  constructor(http: HttpClient) {
-    http.get<WeatherForecast[]>('/weatherforecast').subscribe(result => {
-      this.forecasts = result;
-    }, error => console.error(error));
+  ngOnInit(): void {
+    this.getUsers();      
   }
-
+  getUsers() {
+    this.http.get("https://localhost:5001/api/Users").subscribe(response => {
+      this.users = response
+    }, error => {
+      console.log(error);
+    })
+  }
   title = 'angularapp';
-}
-
-interface WeatherForecast {
-  date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
 }

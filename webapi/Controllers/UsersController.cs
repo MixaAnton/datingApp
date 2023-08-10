@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using webapi.Data;
 using webapi.Entities;
 
