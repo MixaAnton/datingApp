@@ -73,7 +73,6 @@
             "sslKey": "./ssl/server.key",
             "sslCert": "./ssl/server.crt",
             "ssl": true,
-            "proxyConfig": "src/proxy.conf.js"
           }
         },
         "extract-i18n": {
