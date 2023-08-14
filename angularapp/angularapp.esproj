@@ -11,6 +11,8 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\angularapp</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="src\app\_models\" />
+    <Folder Include="src\app\_services\" />
     <Folder Include="ssl\" />
   </ItemGroup>
 </Project>
