@@ -9,8 +9,10 @@ import { User } from '../_models/user';
 export class AccountService {
 
   baseUrl = 'https://localhost:5001/api/';
+
   private currentUserSource = new ReplaySubject<User>();
   currentUser$ = this.currentUserSource.asObservable();
+
   constructor(private http: HttpClient) { }
 
   login(model: any) {
