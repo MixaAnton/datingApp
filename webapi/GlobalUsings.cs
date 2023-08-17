@@ -1,0 +1,9 @@
+﻿global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.IdentityModel.Tokens;
+global using System.Data.SqlClient;
+global using System.Text;
+global using webapi.Data;
+global using webapi.Extensions;
+global using webapi.Interfaces;
+global using webapi.Middleware;
