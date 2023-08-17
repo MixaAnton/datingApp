@@ -11,6 +11,7 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\angularapp</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="environments\" />
     <Folder Include="src\app\errors\" />
     <Folder Include="src\app\_guards\" />
     <Folder Include="src\app\_models\" />

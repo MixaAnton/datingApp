@@ -1,23 +1,18 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using webapi.Data;
 using webapi.DTOs;
-using webapi.Entities;
 
 namespace webapi.Controllers
 {
-   
+    [Authorize]
     public class UsersController : BaseApiController
     {
         private readonly IUserRepository _userRepository;
-        private readonly IMapper _mapper;
 
-        public UsersController(IUserRepository userRepository,IMapper mapper)
+        public UsersController(IUserRepository userRepository)
         {
             _userRepository = userRepository;
-            _mapper = mapper;
+           
         }
 
         [HttpGet]
@@ -26,7 +21,7 @@ namespace webapi.Controllers
             return Ok(await _userRepository.GetMembersAsync());
             
         }
-
+        
         [HttpGet("{username}")]
         public async Task<ActionResult<MemberDto>> GetUser(string username)
         {
