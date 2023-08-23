@@ -29,8 +29,10 @@ export class AccountService {
     )
   }
   register(model: any) {
-
-    return this.http.post<any>(this.baseUrl + '/account/register', model).pipe(
+    console.log(model);
+    //model.dateOfBirth = "2023-08-23T07:29:59.268Z";
+   // console.log(model);
+    return this.http.post<any>(this.baseUrl + 'Account/register', model).pipe(
       map((user: User) => {
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));
