@@ -12,6 +12,7 @@ namespace webapi.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services,IConfiguration configuration)
         {
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<ILikesRepository, LikesRepository>(); 
             services.AddScoped<LogUserActivity>();
             services.AddScoped<IUserRepository,UserRepository>();
             services.AddAutoMapper(typeof(Program).Assembly);
