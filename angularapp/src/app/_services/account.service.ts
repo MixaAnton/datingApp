@@ -21,27 +21,28 @@ export class AccountService {
       map((response: User) => {
         const user = response;
         if (user) {
-          localStorage.setItem('user', JSON.stringify(user));
-          this.currentUserSource.next(user);
+          //localStorage.setItem('user', JSON.stringify(user));
+          //this.currentUserSource.next(user);
+          this.setCurrentUser(user);
         }
                 
       })
     )
   }
   register(model: any) {
-    console.log(model);
-    //model.dateOfBirth = "2023-08-23T07:29:59.268Z";
-   // console.log(model);
+   
     return this.http.post<any>(this.baseUrl + 'Account/register', model).pipe(
       map((user: User) => {
         if (user) {
-          localStorage.setItem('user', JSON.stringify(user));
-          this.currentUserSource.next(user);
+          //localStorage.setItem('user', JSON.stringify(user));
+          //this.currentUserSource.next(user);
+          this.setCurrentUser(user);
           }
       })
     )
   }
   setCurrentUser(user: User) {
+    localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSource.next(user);
   }
   logout() {
