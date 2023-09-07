@@ -13,6 +13,8 @@
   <ItemGroup>
     <Folder Include="environments\" />
     <Folder Include="src\app\errors\" />
+    <Folder Include="src\app\admin\" />
+    <Folder Include="src\app\_directives\" />
     <Folder Include="src\app\_resolvers\" />
     <Folder Include="src\app\_guards\" />
     <Folder Include="src\app\_models\" />

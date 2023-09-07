@@ -31,8 +31,10 @@ export class MemberDetailComponent implements OnInit {
       this.member = data['member'];
     })
 
-    this.route.queryParams.subscribe(params => {
-      params['tab'] ? this.selectTab(params['tab']) : this.selectTab(0);
+    this.route.queryParams.subscribe({
+      next: params => {
+        params['tab'] && this.selectTab(params['tab'])
+      }
     })
 
     this.galleryOptions = [
@@ -69,8 +71,10 @@ export class MemberDetailComponent implements OnInit {
     }
   }
 
-  selectTab(tabId: number) {
-    this.memberTabs.tabs[tabId].active = true;
+  selectTab(heading: string) {
+    if (this.memberTabs) {
+      this.memberTabs.tabs.find(x => x.heading === heading)!.active = true;
+    }
   }
 
   onTabActivated(data: TabDirective) {

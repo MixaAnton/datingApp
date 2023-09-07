@@ -13,6 +13,7 @@ export class MemberMessagesComponent implements OnInit {
   @Input() messages!: Message[];
   @Input() username!: string;
   messageContent!: string;
+  loading = false;
   constructor(public messageService: MessageService) { }
 
   ngOnInit(): void {
