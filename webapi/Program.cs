@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using webapi.Entities;
+using webapi.SignalR;
 
 var builder = WebApplication.CreateBuilder(args);
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -15,11 +16,13 @@ options =>
                {
                    policy.AllowAnyHeader()
                    .AllowAnyMethod()
+                   .AllowCredentials()
                    .WithOrigins("https://localhost:4200");
                });
 }
 );
 builder.Services.AddIdentityServices(builder.Configuration);
+builder.Services.AddSignalR();
 builder.Services.AddControllers();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -46,6 +49,8 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<PresenceHub>("hubs/presence");
+app.MapHub<MessageHub>("hubs/message");
 
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
